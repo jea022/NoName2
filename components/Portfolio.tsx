@@ -11,19 +11,19 @@ export const Portfolio: React.FC = () => {
       title: "Marca Personal",
       category: "Landing Page Profesional",
       result: "+45% en conversiones",
-      image: "/MarcaPersonal.png"
+      image: import.meta.env.BASE_URL + "MarcaPersonal.png"
     },
     {
       title: "Agencia de Marketing",
       category: "Web Corporativa Optimizada",
       result: "60 leads mensuales",
-      image: "/FaralionLogo.jpg"
+      image: import.meta.env.BASE_URL + "FaralionLogo.jpg"
     },
     {
       title: "Emprendimiento Gastronómico",
       category: "Landing Page B2B",
       result: "3.2x ROI en primer mes",
-      image: "/DreamyLogo.svg"
+      image: import.meta.env.BASE_URL + "DreamyLogo.svg"
     }
   ];
 

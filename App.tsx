@@ -12,10 +12,16 @@ import { Footer } from './components/Footer';
 import { RevealOnScroll } from './components/RevealOnScroll';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import { ContactModalProvider, useContactModal } from './context/ContactModalContext';
+import { ContactModal } from './components/ContactModal';
+import { ScrollToTop } from './components/ScrollToTop';
 
-function App() {
+function AppContent() {
+  const { isOpen, closeModal } = useContactModal();
+  
   return (
-    <Router>
+    <>
+      <ScrollToTop />
       <Routes>
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
@@ -57,6 +63,17 @@ function App() {
           </div>
         } />
       </Routes>
+      <ContactModal isOpen={isOpen} onClose={closeModal} />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ContactModalProvider>
+        <AppContent />
+      </ContactModalProvider>
     </Router>
   );
 }

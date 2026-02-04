@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
               {link.name}
             </button>
           ))}
-          <Button size="sm" href="#footer">Hablemos</Button>
+          <Button size="sm" onClick={() => handleNavClick('#footer')}>Hablemos</Button>
         </div>
 
         {/* Mobile Toggle */}
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </button>
             ))}
-            <Button className="w-full">Hablemos</Button>
+            <Button className="w-full" onClick={() => { handleNavClick('#footer'); setIsMobileMenuOpen(false); }}>Hablemos</Button>
           </div>
         )}
       </div>

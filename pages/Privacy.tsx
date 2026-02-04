@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
+import { ArrowLeft } from 'lucide-react';
 
 const Privacy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white">
       <Navbar />
+      
+      {/* Botón fijo para volver */}
+      <Link 
+        to="/#footer" 
+        className="fixed top-24 left-6 z-50 inline-flex items-center gap-2 px-4 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg shadow-orange-500/30 transition-all group"
+      >
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+        Volver
+      </Link>
+
       <main className="container mx-auto px-6 py-16 mt-24">
         <h1 className="text-3xl md:text-5xl font-bold text-orange-500 mb-6 font-syne">Política de Privacidad de noname</h1>
         <p className="mb-4 text-white/80">Última actualización: 2026</p>

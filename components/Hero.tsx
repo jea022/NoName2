@@ -3,6 +3,7 @@ import { ArrowRight, PlayCircle } from 'lucide-react';
 import { Button } from './Button';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import FadeSection from './FadeSection';
+import { useContactModal } from '../context/ContactModalContext';
 
 
 // AnimatedStat usando framer-motion
@@ -26,6 +27,7 @@ function AnimatedStat({ label, value, suffix = '' }: { label: string; value: num
 export const Hero: React.FC = () => {
   const [typedSubtitle, setTypedSubtitle] = useState('');
   const fullSubtitle = 'Landing pages para negocios locales que necesitan ';
+  const { openModal } = useContactModal();
 
   useEffect(() => {
     let currentIndex = 0;
@@ -71,11 +73,11 @@ export const Hero: React.FC = () => {
           </FadeSection>
           <FadeSection delay={0.3}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="group w-full sm:w-auto" href="#footer">
+              <Button size="lg" className="group w-full sm:w-auto" onClick={openModal}>
                 Agendar consulta gratuita
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto" href="#portfolio">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
                 Ver Portafolio
               </Button>
             </div>
