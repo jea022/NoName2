@@ -1,54 +1,54 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
   delay?: number;
 }
 
-export const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delay = 0 }) => {
+export const RevealOnScroll: React.FC<RevealOnScrollProps> = memo(({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect(); // Animate only once
+          observer.disconnect();
         }
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.05,
+        rootMargin: "0px 0px -30px 0px"
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
+      if (currentRef) {
         observer.disconnect();
       }
     };
   }, []);
 
-  const style = {
-    transitionDelay: `${delay}ms`,
-  };
-
   return (
     <div
       ref={ref}
-      style={style}
-      className={`transition-all duration-1000 ease-out transform ${
+      style={{ 
+        transitionDelay: `${delay}ms`,
+        willChange: isVisible ? 'auto' : 'opacity, transform'
+      }}
+      className={`transition-[opacity,transform] duration-700 ease-out ${
         isVisible
           ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-12'
+          : 'opacity-0 translate-y-8'
       }`}
     >
       {children}
     </div>
   );
-};
+});

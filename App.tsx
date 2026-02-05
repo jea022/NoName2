@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -18,6 +18,22 @@ import { ScrollToTop } from './components/ScrollToTop';
 
 function AppContent() {
   const { isOpen, closeModal } = useContactModal();
+
+  useEffect(() => {
+    // Esperar a que todo esté listo y agregar clase al root
+    const handleLoad = () => {
+      setTimeout(() => {
+        document.getElementById('root')?.classList.add('loaded');
+      }, 150);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
+  }, []);
   
   return (
     <>

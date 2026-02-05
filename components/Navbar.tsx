@@ -47,9 +47,11 @@ export const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-orange-500/20">
-                N
-            </div>
+            <img 
+              src={import.meta.env.BASE_URL + "NoName.png"} 
+              alt="No Name Logo" 
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-bold text-white tracking-tight font-syne">NO NAME</span>
         </div>
 

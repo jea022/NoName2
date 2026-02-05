@@ -42,7 +42,9 @@ export const Portfolio: React.FC = () => {
                   <div className="aspect-[4/3] overflow-hidden">
                     <img 
                       src={project.image} 
-                      alt={project.title} 
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                     />
                   </div>

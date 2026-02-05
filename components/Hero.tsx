@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import FadeSection from './FadeSection';
 import { useContactModal } from '../context/ContactModalContext';
+import GyroBackground from './GyroBackground';
 
 
 // AnimatedStat usando framer-motion
@@ -38,13 +39,18 @@ export const Hero: React.FC = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 50); // Adjust typing speed here
+    }, 50);
 
     return () => clearInterval(typingInterval);
   }, []);
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <GyroBackground />
+      </div>
+      
       {/* Background Gradients */}
       <div className="absolute top-0 right-0 max-w-full w-[600px] h-[600px] bg-orange-600/40 rounded-full blur-[140px] -translate-y-1/2 translate-x-1/3 pointer-events-none overflow-x-hidden" />
       <div className="absolute bottom-0 left-0 max-w-full w-[600px] h-[600px] bg-orange-800/30 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/3 pointer-events-none overflow-x-hidden" />

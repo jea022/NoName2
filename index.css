@@ -4,6 +4,8 @@ html {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -20,10 +22,23 @@ body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Optimización de rendimiento para animaciones */
+img, video {
+  content-visibility: auto;
+}
+
+/* Smooth scroll en toda la página */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Ocultar scroll en elementos internos excepto body */
