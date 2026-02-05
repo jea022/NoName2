@@ -84,7 +84,7 @@ export const Hero: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" className="w-full sm:w-auto" onClick={() => document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
-                Ver Portafolio
+                <span className="text-orange-500">Ver Portafolio</span>
               </Button>
             </div>
           </FadeSection>
